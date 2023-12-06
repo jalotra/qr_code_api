@@ -7,7 +7,7 @@ def get_user(db: Session, id: int):
     return db.query(models.User).filter(models.User.user_id == id).first()
 
 
-def create_user(db: Session, id: int, link_limit: Optional[int] = 3):
+def create_user(db: Session, id: int, link_limit: Optional[int] = 1000):
     db_user = models.User(user_id=id, link_limit=link_limit)
     db.add(db_user)
     db.commit()
