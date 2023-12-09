@@ -5,7 +5,7 @@ from typing import Optional
 
 class User(BaseModel):
     user_id: int
-    link_limit: Optional[int] = 3
+    link_limit: Optional[int] = 300
 
     # class Config:
     #     orm_mode = True
