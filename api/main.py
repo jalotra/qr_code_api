@@ -63,7 +63,9 @@ async def get_user(user_id: int, db: Session = Depends(get_db)):
 async def get_link(link_id: int, user_id: int, db: Session = Depends(get_db)):
     link = crud.get_link(db=db, owner_id=user_id, link_id=link_id).link_text
     crud.create_action(db=db, id=uuid4(), link_id=link_id, owner_id=user_id)
-    return link
+    return {
+        "link" : link 
+    }
 
 @app.get('/user/{user_id}/stats/{link_id}')
 async def get_stats(link_id: int, user_id: int, db: Session = Depends(get_db)):
